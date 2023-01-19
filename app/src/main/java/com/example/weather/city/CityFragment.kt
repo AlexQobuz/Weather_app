@@ -38,6 +38,7 @@ class CityFragment : Fragment(), CityAdapter.CityItemListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        cities = database.getAllCities()
         adapter = CityAdapter(cities, this)
         recyclerView.adapter = adapter
     }
@@ -76,13 +77,14 @@ class CityFragment : Fragment(), CityAdapter.CityItemListener {
             override fun onDialogNegativClick() {}
         }
 
-        createCityFragment.show(fragmentManager, "CreateCityDialogFragment")
+        createCityFragment.show(parentFragmentManager, "CreateCityDialogFragment")
 
     }
 
     private fun saveCity(city: City) {
         if (database.createCity(city)) {
             cities.add(city)
+            adapter.notifyDataSetChanged()
         } else {
             Toast.makeText(context,
                 "Could not create city",
