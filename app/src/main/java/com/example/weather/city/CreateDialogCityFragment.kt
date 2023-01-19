@@ -42,4 +42,8 @@ class CreateDialogCityFragment : DialogFragment() {
 
     }
 
+    fun show(fragmentManager: FragmentManager?, s: String) {
+
+    }
+
 }
