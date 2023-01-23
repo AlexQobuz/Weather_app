@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weather.App
-import com.example.weather.App.Companion.database
 import com.example.weather.Database
 import com.example.weather.R
 
@@ -64,7 +63,7 @@ class CityFragment : Fragment(), CityAdapter.CityItemListener {
     }
 
     override fun onCityDeleted(city: City) {
-        TODO("Not yet implemented")
+        showDeleteCityDialog(city)
     }
 
     private fun showCreateCityDialog() {
@@ -81,6 +80,20 @@ class CityFragment : Fragment(), CityAdapter.CityItemListener {
 
     }
 
+    private fun showDeleteCityDialog(city: City) {
+        val deleteCityFragment = DeleteCityDialogFragment.newInstance(city.name)
+        deleteCityFragment.listener = object: DeleteCityDialogFragment.DeleteCityDialogListener {
+            override fun onDialogPositiveClick() {
+                deleteCity(city)
+            }
+
+            override fun onDialogNegativeClick() {
+                TODO("Not yet implemented")
+            }
+
+        }
+    }
+
     private fun saveCity(city: City) {
         if (database.createCity(city)) {
             cities.add(city)
@@ -90,6 +103,10 @@ class CityFragment : Fragment(), CityAdapter.CityItemListener {
                 "Could not create city",
                 Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun deleteCity(city: City) {
+
     }
 
 }
