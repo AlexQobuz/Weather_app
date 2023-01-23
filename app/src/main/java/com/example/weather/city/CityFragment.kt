@@ -13,6 +13,12 @@ import com.example.weather.utils.toast
 
 class CityFragment : Fragment(), CityAdapter.CityItemListener {
 
+    interface CityFragmentListener {
+        fun onCitySelected(city: City)
+    }
+
+    var listener: CityFragmentListener? = null
+
     private lateinit var cities: MutableList<City>
     private lateinit var database: Database
     private lateinit var recyclerView: RecyclerView
@@ -60,7 +66,7 @@ class CityFragment : Fragment(), CityAdapter.CityItemListener {
     }
 
     override fun onCitySelected(city: City) {
-        TODO("Not yet implemented")
+        listener?.onCitySelected(city)
     }
 
     override fun onCityDeleted(city: City) {
