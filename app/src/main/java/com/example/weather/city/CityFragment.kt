@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.weather.App
 import com.example.weather.Database
 import com.example.weather.R
+import com.example.weather.utils.toast
 
 class CityFragment : Fragment(), CityAdapter.CityItemListener {
 
@@ -99,14 +100,18 @@ class CityFragment : Fragment(), CityAdapter.CityItemListener {
             cities.add(city)
             adapter.notifyDataSetChanged()
         } else {
-            Toast.makeText(context,
-                "Could not create city",
-                Toast.LENGTH_LONG).show()
+            requireContext().toast(getString(R.string.city_message_error_could_not_create_city))
         }
     }
 
     private fun deleteCity(city: City) {
-
+        if (database.deleteCity(city)) {
+            cities.remove(city)
+            adapter.notifyDataSetChanged()
+            requireContext().toast(getString(R.string.city_message_info_city_deleted, city.name))
+        } else {
+            requireContext().toast(getString(R.string.city_message_error_could_not_delete_city, city.name))
+        }
     }
 
 }

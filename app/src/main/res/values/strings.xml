@@ -5,6 +5,9 @@
     <string name="createcity_negative">Cancel</string>
     <string name="createcity_cityhint">New York, London...</string>
     <string name="menu_create_city">create city</string>
+    <string name="city_message_error_could_not_create_city">Could not create city</string>
+    <string name="city_message_info_city_deleted">%1$s has been deleted</string>
+    <string name="city_message_error_could_not_delete_city">Could not delete city %1$s</string>
 
     <String name="deletecity_title">Do you really want to delete %1$s?</String>
 </resources>
