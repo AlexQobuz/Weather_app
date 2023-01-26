@@ -1,10 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <TextView
+        android:id="@+id/city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="Toulouse"
+        />
 
+    <ImageView
+        android:id="@+id/weather_icon"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintLeft_toLeftOf="@id/city"
+        app:layout_constraintTop_toBottomOf="@id/city"
+        android:src="@mipmap/ic_launcher"
+        />
+
+    <TextView
+        android:id="@+id/weather_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:textSize="30sp"
+        android:textColor="@color/design_default_color_on_secondary"
+        app:layout_constraintLeft_toRightOf="@id/weather_icon"
+        app:layout_constraintTop_toTopOf="@id/weather_icon"
+        app:layout_constraintBottom_toBottomOf="@id/weather_icon"
+        android:text="Sunny"
+        />
+
+    <FrameLayout
+        android:id="@+id/back_info"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/weather_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        />
+
+    <TextView
+        android:id="@+id/temperature_label"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/temperature_label"
+        app:layout_constraintTop_toTopOf="@id/temperature_label"
+        app:layout_constraintBottom_toBottomOf="@id/temperature_label"
+        style="@style/WeatherData"
+        android:text="Température"
+        />
+
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/WeatherLabel"
+        app:layout_constraintLeft_toLeftOf="@id/temperature_label"
+        app:layout_constraintRight_toRightOf="@id/temperature_label"
+        app:layout_constraintTop_toBottomOf="@id/temperature_label"
+        />
+
+    <TextView
+        android:id="@+id/humidity_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
